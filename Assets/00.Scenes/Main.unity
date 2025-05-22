@@ -771,7 +771,7 @@ MonoBehaviour:
   leverRange: 35
   inputVector: {x: 0, y: 0}
   isInput: 0
-  player: {fileID: 5750054553172926588}
+  player: {fileID: 2023529154}
 --- !u!114 &1209391058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,6 +1074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2023529153}
+  - component: {fileID: 2023529154}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -1098,6 +1099,22 @@ Transform:
   - {fileID: 4938087633798380225}
   m_Father: {fileID: 1431214243}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2023529154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023529152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5265f6aa4cb82234bad0051792c94c82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.01
+  angle: 0
+  mainCharacterObj: {fileID: 5750054553172926587}
+  charAnim: {fileID: 1326222536130748603}
 --- !u!4 &169751952432004330
 Transform:
   m_ObjectHideFlags: 0
@@ -2422,7 +2439,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4938087633798380225}
   - component: {fileID: 1326222536130748603}
-  - component: {fileID: 5750054553172926588}
   m_Layer: 0
   m_Name: HumanM_Model
   m_TagString: Untagged
@@ -2430,21 +2446,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5750054553172926588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5750054553172926587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5265f6aa4cb82234bad0051792c94c82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.01
-  angle: 0
-  charAnim: {fileID: 1326222536130748603}
 --- !u!4 &5797740322612818480
 Transform:
   m_ObjectHideFlags: 0

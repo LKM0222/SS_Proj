@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour
-{
-    [SerializeField] float speed;
-    [SerializeField] float angle;
+{   
+    // Data
+    [SerializeField] float speed = 0.01f;
+    [SerializeField] float angle = 0f;
 
-    //anim
+    // Obj
+    [SerializeField] GameObject mainCharacterObj;
+
+    // anim
     public Animator charAnim;
     public string charState_Walk => "isWalk";
 
@@ -17,6 +21,6 @@ public class Character : MonoBehaviour
         angle = Mathf.Atan2(vec.x, vec.y) * Mathf.Rad2Deg;
 
         this.transform.position += new Vector3(vec.x, 0f, vec.y) * speed;
-        this.transform.rotation = Quaternion.Euler(0f, angle, 0f);        
+        mainCharacterObj.transform.rotation = Quaternion.Euler(0f, angle, 0f);        
     }
 }

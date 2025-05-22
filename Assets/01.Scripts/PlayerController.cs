@@ -14,7 +14,7 @@ public class JoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointer
     [SerializeField] private Vector2 inputVector;
     [SerializeField] private bool isInput;
 
-    // [SerializeField] PlayerTest player;
+    [SerializeField] Character player;
 
     // LifeCycle
     void Update()
@@ -62,6 +62,6 @@ public class JoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointer
     {
         //입력값 전달.
         // Debug.Log(inputVector);
-        // player.Move(inputVector);
+        player.Move(inputVector);
     }
 }

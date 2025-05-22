@@ -62,8 +62,10 @@ public class JoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointer
     private void InputControlVector()
     {
         //입력값 전달.
-        // Debug.Log(inputVector);
         player.Move(inputVector);
-        player.charAnim.SetBool(player.charState_Walk, true);
+        if (inputVector != Vector2.zero)
+        {
+            player.charAnim.SetBool(player.charState_Walk, true);
+        }
     }
 }

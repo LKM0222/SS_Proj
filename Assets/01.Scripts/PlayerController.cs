@@ -43,6 +43,7 @@ public class JoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointer
         inputVector = Vector2.zero;
         lever.anchoredPosition = Vector2.zero;
         joystick.gameObject.SetActive(false);
+        player.charAnim.SetBool(player.charState_Walk, false);
         isInput = false;
     }
 
@@ -63,5 +64,6 @@ public class JoyStick : MonoBehaviour, IPointerUpHandler, IDragHandler, IPointer
         //입력값 전달.
         // Debug.Log(inputVector);
         player.Move(inputVector);
+        player.charAnim.SetBool(player.charState_Walk, true);
     }
 }

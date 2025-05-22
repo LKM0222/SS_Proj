@@ -11,11 +11,12 @@ public enum DispenserType
 public class Dispenser : MonoBehaviour
 {
     [SerializeField] DispenserType type;
-    [SerializeField] GameObject itemObj;
     [SerializeField] float waitTime = 2f;
-    [SerializeField] List<GameObject> item_List; // 스택으로 동작해야함.
+    [SerializeField] int maxCount = 4;
 
+    [SerializeField] List<GameObject> item_List; // 스택으로 동작해야함.
     [SerializeField] Transform group;
+    [SerializeField] GameObject itemObj;
 
 
 
@@ -26,11 +27,13 @@ public class Dispenser : MonoBehaviour
 
     IEnumerator ItemSpawnCoroutine(float time)
     {
+        yield return new WaitForSeconds(time); //처음 생성됐을 때 기다리는 카운트
         while (true)
         {
-            yield return new WaitForSeconds(time);
+            yield return new WaitUntil(() => item_List.Count < maxCount);
             AddObjectStack();
             Debug.Log("Spawn");
+            yield return new WaitForSeconds(time);
         }
     }
 
@@ -43,17 +46,10 @@ public class Dispenser : MonoBehaviour
     private void AddObjectStack()
     {
         // 마지막에 쌓여있는 오브젝트를 가져옴.
-        Vector3 initPos = Vector3.zero;
-
-        if (item_List.Count > 0)
-        {
-            float lastSize = item_List[item_List.Count - 1].GetComponent<Collider>().bounds.size.y;
-            float lastPos = item_List[item_List.Count - 1].transform.localPosition.y;
-            initPos = new Vector3(0f, lastSize + lastPos, 0f);
-            Debug.Log($"SpawnPos : {initPos}, lastSize {lastSize}, lastPos {lastPos}");
-        }
-
-        var item = Instantiate(itemObj, initPos, Quaternion.identity, group);
+        var item = Instantiate(itemObj, group);
+        float size = item.GetComponent<Collider>().bounds.size.y;
+        float LastlocalPosY = item_List.Count > 0 ? item_List[item_List.Count - 1].transform.localPosition.y : 0f;
+        item.transform.localPosition = item_List.Count > 0 ? new Vector3(0f, LastlocalPosY + size, 0f) : Vector3.zero;
         item_List.Add(item);
     }
 }
